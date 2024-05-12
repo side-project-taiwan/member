@@ -23,6 +23,11 @@ public class MemberDataServiceImpl implements MemberDataService {
     }
 
     @Override
+    public void delete(Long pk) {
+        memberRepository.deleteById(pk);
+    }
+
+    @Override
     public Optional<MemberEntity> findByPk(Long pk) {
         return memberRepository.findById(pk);
     }
