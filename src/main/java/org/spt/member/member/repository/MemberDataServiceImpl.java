@@ -1,6 +1,7 @@
 package org.spt.member.member.repository;
 
 import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,6 +14,11 @@ public class MemberDataServiceImpl implements MemberDataService {
 
     @Override
     public MemberEntity create(MemberEntity memberEntity) {
+        return memberRepository.save(memberEntity);
+    }
+
+    @Override
+    public MemberEntity update(MemberEntity memberEntity) {
         return memberRepository.save(memberEntity);
     }
 

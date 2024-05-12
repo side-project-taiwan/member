@@ -5,6 +5,7 @@ import java.util.Optional;
 
 public interface MemberDataService {
     MemberEntity create(MemberEntity memberEntity);
+    MemberEntity update(MemberEntity memberEntity);
 
     Optional<MemberEntity> findByPk(Long pk);
 }
