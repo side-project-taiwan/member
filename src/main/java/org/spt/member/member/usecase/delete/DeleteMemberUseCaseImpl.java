@@ -15,6 +15,6 @@ public class DeleteMemberUseCaseImpl implements DeleteMemberUseCase {
     @Override
     public DeleteMemberResponse delete(Long pk) {
         memberDataService.delete(pk);
-        return new DeleteMemberResponse();
+        return new DeleteMemberResponse("400","delete fail");
     }
 }
