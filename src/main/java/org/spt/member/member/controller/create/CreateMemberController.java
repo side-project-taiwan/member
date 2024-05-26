@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.spt.member.member.common.BusinessErrorCode;
+import org.spt.member.member.common.BusinessException;
+import org.spt.member.member.common.ValidException;
 import org.spt.member.member.usecase.create.CreateMemberUseCase;
 
 import java.util.ArrayList;
@@ -26,12 +29,7 @@ public class CreateMemberController {
     @PostMapping("/create-member")
     public ResponseEntity<?> createMember(@RequestBody @Valid CreateMemberRequest createMemberRequest, BindingResult result) {
         if (result.hasErrors()) {
-            List<ValidationResponse> validationResponses = new ArrayList<>();
-            List<FieldError> fieldErrors = result.getFieldErrors();
-            for (FieldError fieldError : fieldErrors) {
-                validationResponses.add(new ValidationResponse(fieldError.getField(), fieldError.getDefaultMessage()));
-            }
-            return ResponseEntity.badRequest().body(validationResponses);
+            throw new ValidException(result);
         }
         return ResponseEntity.ok(createMemberUseCase.createMember(createMemberRequest));
     }

@@ -31,4 +31,9 @@ public class MemberDataServiceImpl implements MemberDataService {
     public Optional<MemberEntity> findByPk(Long pk) {
         return memberRepository.findById(pk);
     }
+
+    @Override
+    public Optional<MemberEntity> findByEmail(String email) {
+        return memberRepository.findByEmail(email);
+    }
 }
