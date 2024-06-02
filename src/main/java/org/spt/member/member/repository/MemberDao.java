@@ -2,7 +2,7 @@ package org.spt.member.member.repository;
 
 import java.util.Optional;
 
-public interface MemberDataService {
+public interface MemberDao {
     MemberEntity create(MemberEntity memberEntity);
 
     MemberEntity update(MemberEntity memberEntity);

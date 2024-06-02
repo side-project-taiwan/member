@@ -1,16 +1,14 @@
 package org.spt.member.member.repository;
 
-import java.util.Optional;
-
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@Service
-public class MemberDataServiceImpl implements MemberDataService {
-    private final MemberRepository memberRepository;
+import java.util.Optional;
 
-    public MemberDataServiceImpl(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
+@Service
+@RequiredArgsConstructor
+public class MemberDaoImpl implements MemberDao {
+    private final MemberRepository memberRepository;
 
     @Override
     public MemberEntity create(MemberEntity memberEntity) {

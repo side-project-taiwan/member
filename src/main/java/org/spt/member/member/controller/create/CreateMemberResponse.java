@@ -1,4 +1,6 @@
 package org.spt.member.member.controller.create;
 
-public record CreateMemberResponse() {
+import jakarta.validation.constraints.NotNull;
+
+public record CreateMemberResponse(@NotNull Long pk) {
 }

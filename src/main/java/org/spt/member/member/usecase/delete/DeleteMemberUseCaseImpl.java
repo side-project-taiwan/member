@@ -1,20 +1,27 @@
 package org.spt.member.member.usecase.delete;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.spt.member.member.common.BusinessErrorCode;
+import org.spt.member.member.common.BusinessException;
 import org.spt.member.member.controller.delete.DeleteMemberResponse;
-import org.spt.member.member.repository.MemberDataService;
+import org.spt.member.member.repository.MemberDao;
 
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class DeleteMemberUseCaseImpl implements DeleteMemberUseCase {
-    private final MemberDataService memberDataService;
-
-    public DeleteMemberUseCaseImpl(MemberDataService memberDataService) {
-        this.memberDataService = memberDataService;
-    }
+    private final MemberDao memberDao;
 
     @Override
     public DeleteMemberResponse delete(Long pk) {
-        memberDataService.delete(pk);
-        return new DeleteMemberResponse("400","delete fail");
+        try {
+            memberDao.delete(pk);
+        } catch (Exception e) {
+            log.error("[DeleteMemberUseCaseImpl][delete][request pk = {}]", pk);
+            throw new BusinessException(BusinessErrorCode.DATABASE_ERROR);
+        }
+        return new DeleteMemberResponse(pk);
     }
 }
