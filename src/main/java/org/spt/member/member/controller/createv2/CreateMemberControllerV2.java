@@ -24,14 +24,12 @@ public class CreateMemberControllerV2 {
         if (result.hasErrors()) {
             throw new ValidException(result);
         }
-        CreateMemberUseCaseInput input = new CreateMemberUseCaseInput();
-        input.setEmail(createMemberRequestV2.email());
-        input.setPassword(createMemberRequestV2.password());
-        input.setName(createMemberRequestV2.name());
 
-        CreateMemberUseCaseOutput createMemberUseCaseOutput = createMemberUseCase.createMember(input);
-        return new CreateMemberResponseV2(createMemberUseCaseOutput.getPk(), createMemberUseCaseOutput.getEmail(), createMemberUseCaseOutput.getName());
+        CreateMemberUseCaseInput createMemberUseCaseInput = CreateMemberRequestV2Mapper.map(createMemberRequestV2);
+        CreateMemberUseCaseOutput createMemberUseCaseOutput = createMemberUseCase.createMember(createMemberUseCaseInput);
+        return CreateMemberResponseV2Mapper.map(createMemberUseCaseOutput);
     }
+    
 }
 
 

@@ -19,19 +19,18 @@ public class CreateMemberController {
 
     private final CreateMemberUseCase createMemberUseCase;
 
+    @Deprecated
     @PostMapping("/v1/create-member")
     public CreateMemberResponse createMember(@RequestBody @Valid CreateMemberRequest createMemberRequest, BindingResult result) {
         if (result.hasErrors()) {
             throw new ValidException(result);
         }
-        CreateMemberUseCaseInput input = new CreateMemberUseCaseInput();
-        input.setEmail(createMemberRequest.email());
-        input.setPassword(createMemberRequest.password());
-        input.setName(createMemberRequest.name());
-
-        CreateMemberUseCaseOutput createMemberUseCaseOutput = createMemberUseCase.createMember(input);
-        return new CreateMemberResponse(createMemberUseCaseOutput.getPk());
+        CreateMemberUseCaseInput createMemberUseCaseInput = CreateMemberRequestMapper.map(createMemberRequest);
+        CreateMemberUseCaseOutput createMemberUseCaseOutput = createMemberUseCase.createMember(createMemberUseCaseInput);
+        return CreateMemberResponseMapper.map(createMemberUseCaseOutput);
     }
+
+
 }
 
 
