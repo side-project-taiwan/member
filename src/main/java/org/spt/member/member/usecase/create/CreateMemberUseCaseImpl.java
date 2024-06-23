@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.spt.member.member.common.BusinessErrorCode;
 import org.spt.member.member.common.BusinessException;
-import org.spt.member.member.controller.create.CreateMemberRequest;
-import org.spt.member.member.controller.create.CreateMemberResponse;
 import org.spt.member.member.repository.MemberDao;
 import org.spt.member.member.repository.MemberEntity;
 
@@ -20,17 +18,20 @@ public class CreateMemberUseCaseImpl implements CreateMemberUseCase {
 
     @Override
     @Transactional
-    public CreateMemberResponse createMember(CreateMemberRequest createMemberRequest) {
-        final String email = createMemberRequest.email();
+    public CreateMemberUseCaseOutput createMember(CreateMemberUseCaseInput createMemberUseCaseInput) {
+        final String email = createMemberUseCaseInput.getEmail();
         checkEmail(email);
         MemberEntity memberEntity = new MemberEntity();
-        memberEntity.setEmail(createMemberRequest.email());
-        memberEntity.setPassword(createMemberRequest.password());
-        memberEntity.setName(createMemberRequest.name());
+        memberEntity.setEmail(createMemberUseCaseInput.getEmail());
+        memberEntity.setPassword(createMemberUseCaseInput.getPassword());
+        memberEntity.setName(createMemberUseCaseInput.getName());
         memberEntity.setEnable(false);
         MemberEntity createdEntity = memberDao.create(memberEntity);
-
-        return new CreateMemberResponse(createdEntity.getPk());
+        CreateMemberUseCaseOutput output = new CreateMemberUseCaseOutput();
+        output.setPk(createdEntity.getPk());
+        output.setEmail(createdEntity.getEmail());
+        output.setName(createdEntity.getName());
+        return output;
     }
 
     /**

@@ -1,4 +1,4 @@
-package org.spt.member.member.controller.create;
+package org.spt.member.member.controller.createv2;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,22 +15,22 @@ import org.spt.member.member.usecase.create.CreateMemberUseCaseOutput;
 @RestController
 @RequestMapping("/member")
 @RequiredArgsConstructor
-public class CreateMemberController {
+public class CreateMemberControllerV2 {
 
     private final CreateMemberUseCase createMemberUseCase;
 
-    @PostMapping("/v1/create-member")
-    public CreateMemberResponse createMember(@RequestBody @Valid CreateMemberRequest createMemberRequest, BindingResult result) {
+    @PostMapping("/v2")
+    public CreateMemberResponseV2 createMember(@RequestBody @Valid CreateMemberRequestV2 createMemberRequestV2, BindingResult result) {
         if (result.hasErrors()) {
             throw new ValidException(result);
         }
         CreateMemberUseCaseInput input = new CreateMemberUseCaseInput();
-        input.setEmail(createMemberRequest.email());
-        input.setPassword(createMemberRequest.password());
-        input.setName(createMemberRequest.name());
+        input.setEmail(createMemberRequestV2.email());
+        input.setPassword(createMemberRequestV2.password());
+        input.setName(createMemberRequestV2.name());
 
         CreateMemberUseCaseOutput createMemberUseCaseOutput = createMemberUseCase.createMember(input);
-        return new CreateMemberResponse(createMemberUseCaseOutput.getPk());
+        return new CreateMemberResponseV2(createMemberUseCaseOutput.getPk(), createMemberUseCaseOutput.getEmail(), createMemberUseCaseOutput.getName());
     }
 }
 
