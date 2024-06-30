@@ -1,4 +1,4 @@
-package org.spt.member.member.member.controller.create;
+package org.spt.member.member.common.exceptionresponse;
 
 import lombok.Data;
 

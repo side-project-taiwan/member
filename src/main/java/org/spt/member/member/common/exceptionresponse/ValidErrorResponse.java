@@ -1,7 +1,6 @@
 package org.spt.member.member.common.exceptionresponse;
 
 import lombok.*;
-import org.spt.member.member.member.controller.create.ValidationResponse;
 
 import java.util.List;
 

@@ -9,7 +9,7 @@ import org.spt.member.member.common.customexception.BusinessException;
 import org.spt.member.member.common.customexception.ValidException;
 import org.spt.member.member.common.exceptionresponse.ApiErrorResponse;
 import org.spt.member.member.common.exceptionresponse.ValidErrorResponse;
-import org.spt.member.member.member.controller.create.ValidationResponse;
+import org.spt.member.member.common.exceptionresponse.ValidationResponse;
 
 import java.util.ArrayList;
 import java.util.List;
