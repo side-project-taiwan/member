@@ -5,8 +5,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.spt.member.member.controller.create.ValidationResponse;
-import org.spt.member.member.exception.ApiErrorResponse;
+import org.spt.member.member.common.customexception.BusinessException;
+import org.spt.member.member.common.customexception.ValidException;
+import org.spt.member.member.common.exceptionresponse.ApiErrorResponse;
+import org.spt.member.member.common.exceptionresponse.ValidErrorResponse;
+import org.spt.member.member.member.controller.create.ValidationResponse;
 
 import java.util.ArrayList;
 import java.util.List;
