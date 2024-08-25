@@ -12,8 +12,9 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.spt.member.member.member.usecase.create.CreateMemberUseCase;
-import org.spt.member.member.member.usecase.create.CreateMemberUseCaseOutput;
+import org.spt.member.member.controller.create.CreateMemberRequest;
+import org.spt.member.member.usecase.create.CreateMemberUseCase;
+import org.spt.member.member.usecase.create.CreateMemberUseCaseOutput;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
