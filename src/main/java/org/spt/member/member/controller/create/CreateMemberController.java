@@ -35,16 +35,16 @@ public class CreateMemberController {
             @ApiResponse(responseCode = "A00000", description = "Ok", content =
                     {@Content(mediaType = "application/json", schema =
                     @Schema(implementation = CreateMemberResponse.class))}),
-            @ApiResponse(responseCode = "ERROR00001", description = "Ok", content =
+            @ApiResponse(responseCode = "ERROR00001", content =
                     {@Content(mediaType = "application/json", schema =
                     @Schema(implementation = Error00001Response.class))}),
-            @ApiResponse(responseCode = "ERROR00002", description = "Ok", content =
+            @ApiResponse(responseCode = "ERROR00002", content =
                     {@Content(mediaType = "application/json", schema =
                     @Schema(implementation = Error00002Response.class))}),
-            @ApiResponse(responseCode = "ERROR00003", description = "Ok", content =
+            @ApiResponse(responseCode = "ERROR00003", content =
                     {@Content(mediaType = "application/json", schema =
                     @Schema(implementation = Error00003Response.class))}),
-            @ApiResponse(responseCode = "ERROR00004", description = "Internal server error", content =
+            @ApiResponse(responseCode = "ERROR00004", content =
                     {@Content(mediaType = "application/json", schema =
                     @Schema(implementation = ErrorResponse.class))})})
     public CreateMemberResponse createMember(@RequestBody @Valid CreateMemberRequest createMemberRequest, BindingResult result) {
