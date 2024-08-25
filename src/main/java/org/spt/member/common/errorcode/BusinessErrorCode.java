@@ -14,6 +14,7 @@ public enum BusinessErrorCode {
 
     private final String message;
     private final String code;
+
     BusinessErrorCode(String code, String message) {
         this.message = message;
         this.code = code;
