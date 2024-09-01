@@ -1,5 +1,6 @@
 package org.spt.member.common;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -15,10 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestControllerAdvice
+@Slf4j
 public class CustomExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleExceptionResponse(final Exception e) {
+        log.error(e.getMessage(),e);
         ApiErrorResponse apiErrorResponse = new ApiErrorResponse("400", "unknown error");
         return ResponseEntity.badRequest().body(apiErrorResponse);
     }

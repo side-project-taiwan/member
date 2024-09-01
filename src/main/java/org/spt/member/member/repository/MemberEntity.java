@@ -7,22 +7,24 @@ import lombok.Setter;
 @Data
 @Entity
 @Setter
+@Table(name = "MEMBER")
 public class MemberEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "PK")
     private Long pk;
 
-    @Column(name = "email", unique = true, nullable = false)
+    @Column(name = "EMAIL", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "enable", nullable = false)
+    @Column(name = "ENABLE", nullable = false)
     private Boolean enable;
 
 }
