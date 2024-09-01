@@ -4,12 +4,12 @@ import lombok.Getter;
 
 @Getter
 public enum BusinessErrorCode {
-    WRONG_PASSWORD("A0001", "密碼錯誤"),
-    WRONG_ACCOUNT("A0002", "帳號錯誤"),
-    WRONG_EMAIL("A0003", "電子信箱錯誤"),
-    EMAIL_ERROR("A0004", "電子信箱不可重複"),
-    DATA_NOT_FOUND("D0001", "資料不存在"),
-    DATABASE_ERROR("D0000", "資料庫操作失敗");
+    WRONG_PASSWORD("A0001", "password error"),
+    WRONG_ACCOUNT("A0002", "account error"),
+    WRONG_EMAIL("A0003", "email error"),
+    EMAIL_ERROR("A0004", "duplicate email address"),
+    DATA_NOT_FOUND("D0001", "data not found"),
+    DATABASE_ERROR("D0000", "database error+");
 
 
     private final String message;

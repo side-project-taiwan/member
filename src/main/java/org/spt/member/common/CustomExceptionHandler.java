@@ -19,7 +19,7 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleExceptionResponse(final Exception e) {
-        ApiErrorResponse apiErrorResponse = new ApiErrorResponse("400", "未知的錯誤");
+        ApiErrorResponse apiErrorResponse = new ApiErrorResponse("400", "unknown error");
         return ResponseEntity.badRequest().body(apiErrorResponse);
     }
 
